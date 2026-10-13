@@ -1,8 +1,11 @@
+
 package com.gen.ecopulse.service;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import com.gen.ecopulse.entity.Facility;
 import com.gen.ecopulse.repository.FacilityRepository;
@@ -25,24 +28,35 @@ public class FacilityService {
     }
 
     public Facility getFacilityById(Long id) {
-        return facilityRepository.findById(id).orElse(null);
+        return facilityRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Facility not found with ID: " + id
+                ));
     }
 
     public Facility updateFacility(Long id, Facility updatedFacility) {
-        Facility existingFacility = facilityRepository.findById(id).orElse(null);
+        Facility existingFacility = facilityRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(
+                        HttpStatus.NOT_FOUND,
+                        "Facility not found with ID: " + id
+                ));
 
-        if (existingFacility != null) {
-            existingFacility.setName(updatedFacility.getName());
-            existingFacility.setLocation(updatedFacility.getLocation());
-            existingFacility.setType(updatedFacility.getType());
+        existingFacility.setName(updatedFacility.getName());
+        existingFacility.setLocation(updatedFacility.getLocation());
+        existingFacility.setType(updatedFacility.getType());
 
-            return facilityRepository.save(existingFacility);
-        }
-
-        return null;
+        return facilityRepository.save(existingFacility);
     }
 
     public void deleteFacility(Long id) {
+        if (!facilityRepository.existsById(id)) {
+            throw new ResponseStatusException(
+                HttpStatus.NOT_FOUND,
+                "Facility not found with ID: " + id
+            );
+        }
+
         facilityRepository.deleteById(id);
     }
 }
