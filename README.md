@@ -169,7 +169,7 @@ docker compose up --build
 
 ## Screenshots
 
-_Add screenshots of Dashboard, Facilities, and Alerts pages after running the app._
+
 
 ## Known limitations & future work
 
