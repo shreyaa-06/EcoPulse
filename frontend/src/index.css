@@ -1,0 +1,289 @@
+:root {
+  --green-900: #14532d;
+  --green-700: #166534;
+  --green-100: #dcfce7;
+  --bg: #f8fafc;
+  --text: #0f172a;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --danger: #b91c1c;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+.app-shell {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: var(--green-900);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  flex-shrink: 0;
+}
+
+.brand {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  color: #d1fae5;
+  text-decoration: none;
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.nav-link.active {
+  background: var(--green-700);
+  color: #fff;
+}
+
+.main-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: 1.35rem;
+}
+
+.content {
+  padding: 1.25rem 1.5rem 2rem;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 960px) {
+  .app-shell {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+}
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+}
+
+.stat-label {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.stat-value {
+  margin: 0.25rem 0 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--green-900);
+}
+
+.unit {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem 0.4rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+
+th {
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.form-card label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+}
+
+input,
+select,
+textarea {
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font: inherit;
+}
+
+.checkbox {
+  flex-direction: row !important;
+  align-items: center;
+  gap: 0.5rem !important;
+}
+
+.btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  font: inherit;
+}
+
+.btn.primary {
+  background: var(--green-700);
+  border-color: var(--green-700);
+  color: #fff;
+}
+
+.link-btn {
+  background: none;
+  border: none;
+  color: var(--green-700);
+  cursor: pointer;
+  padding: 0;
+  margin-right: 0.5rem;
+  font: inherit;
+}
+
+.link-btn.danger {
+  color: var(--danger);
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: flex-end;
+}
+
+.filters label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+}
+
+.banner {
+  padding: 0.65rem 0.9rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.banner-success {
+  background: var(--green-100);
+  color: var(--green-900);
+}
+
+.banner-error {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.state-message {
+  color: var(--muted);
+}
+
+.state-message.error {
+  color: var(--danger);
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 0.85rem;
+}
+
+.plain-list {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.badge {
+  background: var(--green-100);
+  color: var(--green-900);
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.row-actions {
+  white-space: nowrap;
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.5rem;
+}

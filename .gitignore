@@ -31,3 +31,12 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Local secrets ###
+.env
+application-local.properties
+application.local.properties
+
+### Frontend ###
+frontend/node_modules/
+frontend/dist/

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
+
 import com.gen.ecopulse.entity.Facility;
 import com.gen.ecopulse.service.FacilityService;
 
@@ -26,7 +28,7 @@ public class FacilityController {
 
     @PostMapping("/api/facilities")
     @ResponseStatus(HttpStatus.CREATED)
-    public Facility createFacility(@RequestBody Facility facility) {
+    public Facility createFacility(@Valid @RequestBody Facility facility) {
         return facilityService.createFacility(facility);
     }
 
@@ -41,12 +43,13 @@ public class FacilityController {
     }
 
     @PutMapping("/api/facilities/{id}")
-    public Facility updateFacility(@PathVariable Long id, @RequestBody Facility facility) {
+    public Facility updateFacility(@PathVariable Long id, @Valid @RequestBody Facility facility) {
         return facilityService.updateFacility(id, facility);
     }
+
     @DeleteMapping("/api/facilities/{id}")
-    public String deleteFacility(@PathVariable Long id) {
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFacility(@PathVariable Long id) {
         facilityService.deleteFacility(id);
-        return "Facility deleted successfully!";
     }
 } 
